@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Learning Modules</h2>
+<ul>
+    {% for m in modules %}
+    <li><a href="/quiz/{{ m.id }}">{{ m.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

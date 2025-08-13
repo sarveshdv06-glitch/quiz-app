@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ module.name }} Quiz</h2>
+<form method="POST">
+    {% for q in module.questions %}
+        <div style="margin-bottom: 15px;">
+            <strong>{{ loop.index }}. {{ q.text }}</strong><br>
+            {% for option in q.options.split(',') %}
+                <label>
+                    <input type="radio" name="q{{ q.id }}" value="{{ option }}"> {{ option }}
+                </label><br>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <button type="submit">Submit</button>
+</form>
+{% if score is defined %}
+    <h3>Your Score: {{ score }}/{{ total }}</h3>
+{% endif %}
+{% endblock %}
